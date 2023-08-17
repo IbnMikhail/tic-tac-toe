@@ -21,3 +21,20 @@
   font-size: 22px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
+
+.restart{
+    background-color: #5b777f;
+    border: none;
+    width: 150px;
+    height: 80px;
+    color: aliceblue;
+    font-size: 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 5%;
+    margin-left: 50%;
+}
+
+.restart:hover{
+    background-color: #1a4652;
+}

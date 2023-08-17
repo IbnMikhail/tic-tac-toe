@@ -2,25 +2,38 @@ import React, { useState } from "react";
 import BoxComponent from "../components/box";
 
 function GamePage() {
-  const [board, setBoard] = useState(Array(9).fill(null));
-  const [xIsNext, setXIsNext] = useState(true);
+  const [gameBoard, setGameBoard] = useState(Array(9).fill(null));
+  const [turn, setTurn] = useState(true);
+
+  // const handleClick = (index) => {
+  //   const newBoard = [...gameBoard];
+  //   if (calculateWinner(gameBoard) || newBoard[index]) return;
+  //   newBoard[index] = turn ? "X" : "O";
+  //   setGameBoard(newBoard);
+  //   setTurn(!turn);
+  // };
+
+  const handleRestart = () => {
+    setGameBoard(Array(9).fill(null));
+    setTurn(true);
+  };
 
   const handleClick = (index) => {
-    const newBoard = [...board];
-    if (calculateWinner(board) || newBoard[index]) return;
-    newBoard[index] = xIsNext ? "X" : "O";
-    setBoard(newBoard);
-    setXIsNext(!xIsNext);
+    const updatedBoard = [...gameBoard];
+    if (calculateWinner(updatedBoard) || updatedBoard[index]) return;
+    updatedBoard[index] = turn ? "X" : "O";
+    setGameBoard(updatedBoard);
+    setTurn(!turn);
   };
 
   const renderSquare = (index) => (
-    <BoxComponent value={board[index]} onClick={() => handleClick(index)} />
+    <BoxComponent value={gameBoard[index]} onClick={() => handleClick(index)} />
   );
 
-  const winner = calculateWinner(board);
+  const winner = calculateWinner(gameBoard);
   const status = winner
     ? `Winner: ${winner}`
-    : `Next player: ${xIsNext ? "Player 1" : "Player 2"}`;
+    : `Next player: ${turn ? "Player One" : "Player Two"}`;
 
   return (
     <div className="game-board">
@@ -44,7 +57,10 @@ function GamePage() {
           {renderSquare(7)}
           {renderSquare(8)}
         </div>
-      </div> 
+      </div>
+      <button className="restart" onClick={handleRestart}>
+        Restart
+      </button>
     </div>
   );
 }
