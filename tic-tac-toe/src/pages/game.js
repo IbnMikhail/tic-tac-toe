@@ -8,24 +8,23 @@ function GamePage() {
   const handleClick = (index) => {
     const newBoard = [...board];
     if (calculateWinner(board) || newBoard[index]) return;
-    newBoard[index] = xIsNext ? 'X' : 'O';
+    newBoard[index] = xIsNext ? "X" : "O";
     setBoard(newBoard);
     setXIsNext(!xIsNext);
   };
 
   const renderSquare = (index) => (
-    <BoxComponent
-      value={board[index]}
-      onClick={() => handleClick(index)}
-    />
+    <BoxComponent value={board[index]} onClick={() => handleClick(index)} />
   );
 
-  // const winner = calculateWinner(board);
-  // const status = winner ? Winner: ${winner} : Next player: ${xIsNext ? 'X' : 'O'};
-  
+  const winner = calculateWinner(board);
+  const status = winner
+    ? `Winner: ${winner}`
+    : `Next player: ${xIsNext ? "X" : "O"}`;
+
   return (
     <div className="game-board">
-      {/* <div className="status">{status}</div> */}
+      <div className="status">{status}</div>
       <h1>Tic Tac Toe</h1>
       <div className="game-row">
         {renderSquare(0)}
@@ -39,7 +38,7 @@ function GamePage() {
         {renderSquare(5)}
       </div>
 
-      <div className="game-row">        
+      <div className="game-row">
         {renderSquare(6)}
         {renderSquare(7)}
         {renderSquare(8)}
