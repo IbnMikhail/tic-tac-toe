@@ -23,7 +23,7 @@
 }
 
 .restart{
-    background-color: #5b777f;
+    background-color: #010101;
     border: none;
     width: 150px;
     height: 80px;
@@ -36,5 +36,6 @@
 }
 
 .restart:hover{
-    background-color: #1a4652;
+    background-color: gray;
+    transform: scale(1.02);
 }
