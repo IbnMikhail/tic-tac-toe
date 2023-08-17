@@ -20,29 +20,31 @@ function GamePage() {
   const winner = calculateWinner(board);
   const status = winner
     ? `Winner: ${winner}`
-    : `Next player: ${xIsNext ? "X" : "O"}`;
+    : `Next player: ${xIsNext ? "Player 1" : "Player 2"}`;
 
   return (
     <div className="game-board">
       <div className="status">{status}</div>
       <h1>Tic Tac Toe</h1>
-      <div className="game-row">
-        {renderSquare(0)}
-        {renderSquare(1)}
-        {renderSquare(2)}
-      </div>
+      <div className="board">
+        <div className="game-row">
+          {renderSquare(0)}
+          {renderSquare(1)}
+          {renderSquare(2)}
+        </div>
 
-      <div className="game-row">
-        {renderSquare(3)}
-        {renderSquare(4)}
-        {renderSquare(5)}
-      </div>
+        <div className="game-row">
+          {renderSquare(3)}
+          {renderSquare(4)}
+          {renderSquare(5)}
+        </div>
 
-      <div className="game-row">
-        {renderSquare(6)}
-        {renderSquare(7)}
-        {renderSquare(8)}
-      </div>
+        <div className="game-row">
+          {renderSquare(6)}
+          {renderSquare(7)}
+          {renderSquare(8)}
+        </div>
+      </div> 
     </div>
   );
 }
